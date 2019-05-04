@@ -1,31 +1,23 @@
 {{ define "main" }}
 {{ $paginator := .Paginate .Pages.ByPublishDate.Reverse }}
 
-<div class="columns">
-    <div class="column is-9">
-        <div class="content box">
-                {{ range $paginator.Pages }}
-                  {{- partial "article.html" . -}}
-                {{ end }}
-        </div>
-    </div>
-    <div class="column is-3">
-    </div>
+
+<div class="content box">
+    {{ range $paginator.Pages }}
+    {{- partial "article.html" . -}}
+    {{ end }}
 </div>
-<div class="columns">
-    <div class="column is-9">
-        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-            {{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
-            {{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
-            <ul class="pagination-list">
-                {{ range $paginator.Pagers }}
-                <li>
-                    <a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}" aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
-                </li>
-                {{ end }}
-            </ul>
-        </nav>
-    </div>
-</div>
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+    {{ if $paginator.HasPrev }}<a class="pagination-previous" href="{{ $paginator.Prev.URL }}">Previous</a>{{ end }}
+    {{ if $paginator.HasNext }}<a class="pagination-next" href="{{ $paginator.Next.URL }}">Next</a>{{ end }}
+    <ul class="pagination-list">
+        {{ range $paginator.Pagers }}
+        <li>
+            <a class="pagination-link{{ if eq . $paginator }} is-current{{ end }}"
+                aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</nav>
 
 {{ end }}

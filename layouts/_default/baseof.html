@@ -6,11 +6,33 @@
     {{- partial "header.html" . -}}
     <div class="section">
         <div class="container">
-            {{- block "main" . }}{{- end }}
+            <div class="columns">
+                <div class="column is-9">
+                    {{- block "main" . }}{{- end }}
+                </div>
+                <div class="column is-3">
+
+                    {{- block "sidebar" . -}}
+                    <div class="box content">
+                        <h4 class="title is-5">Tags</h4>
+                        <div class="tags">
+                        {{ range .Site.Taxonomies.tags.ByCount }}
+                        <span class="tag">
+                            <a href="{{ (printf "%s/%s" "tags" .Name) | relURL }}">
+                                {{ .Name }}
+                            </a>
+                        </span>
+                        {{ end }}
+                        </div>
+                    </div>
+                    {{- end -}}
+
+                </div>
+            </div>
         </div>
     </div>
-    
+
     {{- partial "footer.html" . -}}
 </body>
 
-</html> 
+</html>
