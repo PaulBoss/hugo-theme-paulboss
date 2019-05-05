@@ -15,19 +15,31 @@
                     {{- block "sidebar" . -}}
                     <div class="box content">
                         <h4 class="title is-5">Tags</h4>
-                        <div class="tags">
-                        {{ range .Site.Taxonomies.tags.ByCount }}
-                        <span class="tag">
-                            <a href="{{ (printf "%s/%s" "tags" .Name) | relURL }}">
-                                {{ .Name }}
-                            </a>
-                        </span>
-                        {{ end }}
-                        </div>
+                        <ul class="tags is-marginless">
+                            {{ range .Site.Taxonomies.tags.ByCount }}
+                            <li class="tag">
+                                <a href="{{ (printf "%s/%s" "tags" .Name) | relURL }}">
+                                    {{ .Name }}
+                                </a>
+                            </li>
+                            {{ end }}
+                        </ul>
                     </div>
-                    {{- end -}}
+
+                    <div class="box content">
+                        <h4 class="title is-5">Archives</h4>
+                        <ul>
+                            {{ range (where .Site.RegularPages "Section" "posts").GroupByDate "2006" }}
+                            <li><a href="{{ (printf "%s/%s" "archives" .Key) | relURL }}">{{ .Key }}</a>
+                                ({{ len .Pages }})</li>
+                            {{ end }}
+                        </ul>
+                    </div>
 
                 </div>
+
+                {{- end -}}
+
             </div>
         </div>
     </div>
