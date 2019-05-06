@@ -1,3 +1,6 @@
+body,button,input,select,textarea {
+    font-family: 'Open Sans', sans-serif !important;
+}
 .has-background-dark a:hover {
     color: #ffffff;
 }
