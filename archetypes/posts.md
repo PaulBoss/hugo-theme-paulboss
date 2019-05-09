@@ -3,5 +3,6 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 archives: "{{ dateFormat "2006" now }}"
 tags: []
-author: Paul Bosselaar
+author: "Paul Bosselaar"
+heroimage: 
 ---
