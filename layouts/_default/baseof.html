@@ -13,28 +13,7 @@
                 <div class="column is-3">
 
                     {{- block "sidebar" . -}}
-                    <div class="box content">
-                        <h4 class="title is-5">Tags</h4>
-                        <ul class="tags is-marginless">
-                            {{ range .Site.Taxonomies.tags.ByCount }}
-                            <li class="tag">
-                                <a href="{{ (printf "%s/%s" "tags" .Name) | relURL }}">
-                                    {{ .Name }}
-                                </a>
-                            </li>
-                            {{ end }}
-                        </ul>
-                    </div>
-
-                    <div class="box content">
-                        <h4 class="title is-5">Archives</h4>
-                        <ul>
-                            {{ range (where .Site.RegularPages "Section" "posts").GroupByDate "2006" }}
-                            <li><a href="{{ (printf "%s/%s" "archives" .Key) | relURL }}">{{ .Key }}</a>
-                                ({{ len .Pages }})</li>
-                            {{ end }}
-                        </ul>
-                    </div>
+                    {{- partial "sidebar.html" . -}}
                     {{- end -}}
                 </div>
             </div>

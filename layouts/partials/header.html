@@ -11,7 +11,7 @@
 </nav>
 
 <section class="hero is-dark">
-    <div class="hero-body" style="background-image: url({{ index .Params "heroimage" | default "img/work.jpg" | absURL }});">
+    <div class="hero-body" style="background-image: url({{ index .Params "heroimage" | default .Site.Params.defaultHeroImage | absURL }});">
         <div class="container">
             <h1 class="title is-size-1 {{ if .Params.darkherotext }} {{ "has-text-dark" }} {{ end }}">
                 {{ .Title }}
