@@ -7,7 +7,7 @@
 
 <div class="box content">
 <h2>Recent posts</h2>
-{{ range first 5 .Pages.ByPublishDate.Reverse }}
+{{ range first 5 .Site.RegularPages }}
 {{- partial "article.html" . -}}
 {{ end }}
 </div>
